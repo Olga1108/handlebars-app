@@ -1,7 +1,7 @@
 const headerData = [
-    {text: 'DOC UA', href: '#'}, 
-    {text: 'Category', href: '#'}, 
-    {text: 'main', href: '#'}];
+    {text: 'DOC UA', href: 'https://olga1108.github.io/handlebarsapp'}, 
+    {text: 'Category', href: 'https://olga1108.github.io/handlebarsapp'}, 
+    {text: 'main', href: 'https://olga1108.github.io/handlebarsapp'}];
 
 window.addEventListener("DOMContentLoaded", () => {
     const resultsNode = document.querySelector('#results');
