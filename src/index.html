@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JS Template Engines</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./images/logo-title1.png" type="image/x-icon">
+    <!-- UUI & libs styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css.map" />
+    <link rel="stylesheet" href="css/bootstrap.css.map" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- task styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/5f4ce08ecd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+                <a class="navbar-brand" href="/">
+                    <img src="./images/doc-ua-logo.png" style="width: 110px; height: 40px;" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- place for nav-list -->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center py-3 px-4 my-0 mx-auto" style="width: 100%;" id="results">
+            </div>
+        </div>
+    </main>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="modalContainer">
+                
+            </div>
+        </div>
+    </div>
+    <script id="headerTemplate" type="text/x-handlebars-template">
+        {{#list nav}}
+        <a class="nav-link text-uppercase" href="{{url}}">{{text}}</a>
+        {{/list}}
+    </script>
+    <!-- STUDENTS LIST -->
+    <script id="studentsTemplate" type="text/x-handlebars-template">
+        {{#each list}}
+        <div class="student card d-flex text-center mx-2 my-2 justify-content-center">
+            <div class="card-header card-header--list px-0 pb-0">
+                <h6 class="text-uppercase text-white position-relative card__title">Profile card</h6>
+                <img src="{{photoUrl}}" alt="student" class="img-top mt-0 rounded-circle position-relative">
+            </div>
+            <h6 class="text-uppercase name pt-5">{{firstName}} {{lastName}}</h6>
+            <p>{{title}}</p>
+            <button type="button" class="btn card--btn btn-success btn-sm mr-2 ml-auto my-1" id="{{employeeId}}" data-toggle="modal" data-target="#exampleModal">Get info</button>
+        </div>
+        {{/each}}
+    </script>
+    <!-- MODAL TEMPLATE -->
+    <script id="modalTemplate" type="text/x-handlebars-template">
+        <div class="modal-header bg-secondary text-white text-center">
+            <h5 class="text-uppercase text-center mx-auto" id="exampleModalLabel">{{firstName}} {{lastName}} profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-3">
+                        <img src="{{photoUrl}}" alt="avatar" class="rounded-circle border--img">
+                    </div>
+                    <div class="col-8 student-content">
+                        <h5 class="student-name text-info text-uppercase">{{firstName}} {{lastName}}</h5>
+                        <a class="email text-info" href="mailto:{{email}}">{{lowerCase email}}</a>
+                        <h6 class="text-uppercase text-success pt-3">{{title}}</h6>
+                        <div class="address text-dark">{{location}} ({{unit.name}})</div>
+                    </div>
+                    <div class="col-1 helper-man">
+                        <a href="https://upsa.epam.com/workload/employeeView.do?employeeId={{employeeId}}"><i class="fas fa-male"></i></a>
+                    </div>
+                </div>
+                <div class="row justify-content-between pb-4 pt-5">
+                    <div class="card card-modal border-info px-0">
+                        <div class="card-header bg-info text-center">
+                            <i class="fas fa-home my-3"></i>
+                            <h6 class="text-white text-uppercase py-2">academic degree</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-center">{{unit.name}}</h6>
+                        </div>
+                    </div>
+                    <div class="card card-modal border-dark px-0">
+                        <div class="card-header bg-dark text-center">
+                            <i class="fas fa-star my-3"></i>
+                            <h6 class="text-white text-uppercase py-3">speciality</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-center">{{primarySkill.name}}</h6>
+                        </div>
+                    </div>
+                    <div class="card card-modal border-danger px-0">
+                        <div class="card-header bg-danger text-center">
+                            <i class="fas fa-graduation-cap my-3"></i>
+                            <h6 class="text-white text-uppercase py-3">supervisor</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-center">{{manager.firstName}} {{manager.lastName}}</h6>
+                        </div>
+                    </div>
+                    <div class="card card-modal border-success px-0">
+                        <div class="card-header bg-success text-center">
+                            <i class="fas fa-calendar-alt my-3"></i>
+                            <h6 class="text-white text-uppercase py-3">work days</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-center">{{workDays hireDate}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn--footer btn-success" data-dismiss="modal">Ok</button>
+        </div>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="js/lib/bootstrap.bundle.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/handlebars-v4.7.7.js"></script>
+    <!-- task scripts -->
+    <script src="js/handlebars-helpers.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

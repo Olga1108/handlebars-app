@@ -1,0 +1,97 @@
+/* Insert you task implementation here. */
+body {
+    position: relative;
+    z-index: 1;
+}
+.container {
+    margin: 0 auto;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card {
+    width: 23%;
+}
+.rounded-circle {
+    width: 150px;
+}
+.card--btn {
+    visibility: hidden;
+}
+.card:hover > .card--btn {
+    visibility: visible;
+}
+.card:hover > .card-header--list {
+    background-color: rgb(21, 143, 173);
+}
+.fa-male {
+    color: rgb(255, 217, 0);
+    font-size: 40px;
+}
+.fa-home,
+.fa-star,
+.fa-graduation-cap,
+.fa-calendar-alt {
+    color: white;
+    font-size: 50px;
+}
+.card-header--list {
+    background-color: rgb(197, 197, 197);
+}
+.card-modal {
+    width: 24%;
+}
+.border--img {
+    border: 6px solid rgb(218, 218, 218);
+}
+.card__title {
+    top: 20px;
+}
+.img-top {
+    top: 30px;
+    border: 6px solid rgb(236, 236, 236);
+}
+.nav-item:first-child {
+    position: relative;
+    padding-left: 36px;
+    font-size: 20px;
+}
+.nav-item:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+.nav-item:first-child::before {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    content: url('../images/logo_search1.png');
+    width: 26px;
+    height: 16px;
+}
+.nav-link {
+    font-weight: 700;
+}
+.nav-link:hover {
+    color: rgb(21, 143, 173) !important;
+}
+.activeNav {
+    color: rgb(21, 143, 173);
+}
+.email,
+.address {
+    position: relative;
+    padding-left: 18px;
+}
+.email::before,
+.address::before {
+    position: absolute;
+    left: 0;
+    font-family: "Font Awesome 5 Free";
+}
+.email::before {
+    content: "\f0e0";
+}
+.address::before {
+    content: "\f3c5"; 
+    font-weight: 900;
+}
