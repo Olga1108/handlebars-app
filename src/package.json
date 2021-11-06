@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://olga1108.github.io/handlebarsapp",
   "scripts": {
-    "deploy": "gh-pages -d src",
+    "deploy": "gh-pages -d index.html",
     "start": "http-server -c-1"
   },
   "author": "Olha",
